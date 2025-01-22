@@ -2,6 +2,7 @@ export type Paths = {
   build: string;
   entry: string;
   html: string;
+  src: string;
 };
 
 export type Mode = "development" | "production";
