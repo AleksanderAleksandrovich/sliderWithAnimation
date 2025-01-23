@@ -1,0 +1,10 @@
+.left {
+  transform: rotate(180deg);
+}
+.arrow {
+  flex-shrink: 0;
+}
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}

@@ -1,0 +1,21 @@
+.sliderWrapper {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.btnPrev,
+.btnNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.btnPrev {
+  left: -70px;
+}
+
+.btnNext {
+  right: -70px;
+}
