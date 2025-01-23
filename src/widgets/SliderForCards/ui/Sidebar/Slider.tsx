@@ -8,7 +8,7 @@ import { Card } from "../Card/Card";
 
 import { data } from "shared/data/data";
 
-export const MySlider = () => {
+export const SliderForCards = () => {
   const swiperRef = useRef<SwiperRef>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);

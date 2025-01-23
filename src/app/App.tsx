@@ -1,10 +1,10 @@
 import "app/styles/index.scss";
-import { MySlider } from "widgets/Slider";
+import { MainPage } from "pages/MainPage";
 
 export const App = () => {
   return (
     <div className="app">
-      <MySlider />
+      <MainPage />
     </div>
   );
 };
