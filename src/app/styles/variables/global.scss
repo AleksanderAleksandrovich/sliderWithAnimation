@@ -1,2 +1,31 @@
 :root {
+  --font-family-main: "PT Sans", "Times New Roman", serif;
+  --font-family-secondary: "Bebas Neue", "Times New Roman", serif;
+  --font-size-s: 14px;
+  --font-size-m: 20px;
+  --font-size-l: 25px;
+  --font-size-xl: 56px;
+  --font-size-xxl: 200px;
+  --line-height-s: 18px;
+  --line-height-m: 30px;
+  --line-height-l: 30px;
+  --line-height-xl: 66px;
+  --line-height-xxl: 160px;
+  --font-s: 400 var(--font-size-s) / var(--line-height-s)
+    var(--font-family-main);
+  --font-m: 400 var(--font-size-m) / var(--line-height-m)
+    var(--font-family-main);
+  --font-m-bold: 700 var(--font-size-m) / var(--line-height-m)
+    var(--font-family-main);
+  --font-l: 400 var(--font-size-l) / var(--line-height-l)
+    var(--font-family-secondary);
+  --font-xl: 700 var(--font-size-xl) / var(--line-height-xl)
+    var(--font-family-main);
+  --font-xxl: 700 var(--font-size-xxl) / var(--line-height-xxl)
+    var(--font-family-main);
+
+  --color-primary: #42567a;
+  --color-blue: #3877ee;
+  --color-blueShadow: #3878ee3a;
+  --color-pink: #ef5da8;
 }

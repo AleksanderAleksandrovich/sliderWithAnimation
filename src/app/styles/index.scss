@@ -1,5 +1,9 @@
 @use "./reset";
+@use "./fonts";
+@use "./variables/global";
 
 .app {
-  background: green;
+  color: var(--color-primary);
+  width: 1440px;
+  margin: 0 auto;
 }
