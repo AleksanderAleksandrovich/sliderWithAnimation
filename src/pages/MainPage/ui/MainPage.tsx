@@ -1,5 +1,4 @@
-import { SliderEvents } from "features/SlideEvents";
-
+import { SliderEvents } from "features/SliderEvents";
 
 export const MainPage = () => {
   return (
