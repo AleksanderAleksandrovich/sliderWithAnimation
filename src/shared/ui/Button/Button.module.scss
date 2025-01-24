@@ -1,6 +1,7 @@
 .button {
   cursor: pointer;
   background: transparent;
+  padding: 0;
 }
 
 .circle {
@@ -8,12 +9,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
 }
 
 .blue {
   border: none;
   box-shadow: 0px 0px 15px 0px var(--color-blueShadow);
+}
+
+.gray {
+  border: 1px solid var(--color-primaryBorder);
 }
 
 .sizeM {
@@ -27,4 +31,8 @@
 .sizeXl {
   width: 56px;
   height: 56px;
+}
+
+.disabled {
+  opacity: 50%;
 }

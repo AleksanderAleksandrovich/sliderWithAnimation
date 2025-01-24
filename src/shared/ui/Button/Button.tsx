@@ -4,6 +4,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 
 export enum ButtonTheme {
   BLUE = "blue",
+  GRAY = "gray",
 }
 
 export enum ButtonSize {
@@ -16,11 +17,13 @@ type ButtonProps = {
   theme?: ButtonTheme;
   circle?: boolean;
   size?: ButtonSize;
+  disabled?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button = ({
   children,
   className,
+  disabled,
   theme,
   size = ButtonSize.M,
   circle,
@@ -28,12 +31,13 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={classNames(classes.button, { [classes.circle]: circle }, [
-        className,
-        classes[size],
-        classes[theme],
-      ])}
+      className={classNames(
+        classes.button,
+        { [classes.circle]: circle, [classes.disabled]: disabled },
+        [className, classes[size], classes[theme]]
+      )}
       type="button"
+      disabled={disabled}
       {...otherProps}
     >
       {children}
