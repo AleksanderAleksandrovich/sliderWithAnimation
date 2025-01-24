@@ -1,0 +1,16 @@
+.wrapperTitle {
+  display: flex;
+  align-items: stretch;
+  width: 400px;
+  gap: 78px;
+}
+
+.line {
+  width: 5px;
+  flex-shrink: 0;
+  background: linear-gradient(to top, var(--color-pink), var(--color-blue));
+}
+
+.title {
+  font: var(--font-xl);
+}
