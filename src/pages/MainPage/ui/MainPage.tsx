@@ -1,9 +1,10 @@
-import { SliderForCards } from "widgets/SliderForCards";
+import { SliderEvents } from "features/SlideEvents";
+
 
 export const MainPage = () => {
   return (
     <div>
-      <SliderForCards />
+      <SliderEvents />
     </div>
   );
 };
