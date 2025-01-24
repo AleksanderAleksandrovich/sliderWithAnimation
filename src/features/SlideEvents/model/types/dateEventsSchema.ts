@@ -1,7 +1,4 @@
-type Fact = {
-  title: string;
-  description: string;
-};
+import { Fact } from "shared/data/type";
 
 export type DateEvent = {
   dateStart: string;
@@ -10,4 +7,5 @@ export type DateEvent = {
 };
 export type DateEventsSchema = {
   dateEvents: DateEvent[];
+  current: number;
 };
