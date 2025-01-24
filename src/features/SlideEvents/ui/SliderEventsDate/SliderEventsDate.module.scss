@@ -1,0 +1,19 @@
+.sliderEventsDate {
+  display: flex;
+  gap: 110px;
+  align-content: center;
+  justify-content: center;
+}
+
+.beginDate,
+.endDate {
+  font: var(--font-xxl);
+  letter-spacing: -4px;
+}
+
+.beginDate {
+  color: var(--color-blue);
+}
+.endDate {
+  color: var(--color-pink);
+}
