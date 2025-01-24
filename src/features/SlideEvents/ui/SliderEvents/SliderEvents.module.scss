@@ -38,3 +38,18 @@
 .date {
   margin-top: 96px;
 }
+
+.wrapperBlockControl {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: start;
+  margin-left: 80px;
+  margin-top: 175px;
+  margin-bottom: 56px;
+}
+
+.wrapperController {
+  display: flex;
+  gap: 20px;
+}
