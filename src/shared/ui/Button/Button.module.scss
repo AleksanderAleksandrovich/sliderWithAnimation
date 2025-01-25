@@ -1,7 +1,10 @@
 .button {
   cursor: pointer;
-  background: transparent;
+  background-color: #fff;
   padding: 0;
+  color: var(--color-primary);
+  font: var(--font-m);
+  transition: width 0.3s, height 0.3s, background-color 0.3s;
 }
 
 .circle {
@@ -17,22 +20,86 @@
 }
 
 .gray {
-  border: 1px solid var(--color-primaryBorder);
+  border: 1px solid var(--color-primaryBorderButton);
 }
 
 .sizeM {
-  width: 40px;
-  height: 40px;
+  width: var(--size-m);
+  height: var(--size-m);
 }
 .sizeL {
-  width: 50px;
-  height: 50px;
+  width: var(--size-l);
+  height: var(--size-l);
 }
 .sizeXl {
-  width: 56px;
-  height: 56px;
+  width: var(--size-xl);
+  height: var(--size-xl);
 }
 
 .disabled {
   opacity: 50%;
+}
+
+.animated {
+  background-color: var(--color-primary);
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    bottom: -15px;
+    left: -15px;
+    right: -15px;
+    background-color: transparent;
+    pointer-events: all;
+  }
+
+  &.selected:before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &.sizeM,
+  &.sizeL,
+  &.sizeXl {
+    width: var(--size-s);
+    height: var(--size-s);
+  }
+
+  &.sizeM:hover,
+  &.sizeM.selected {
+    width: var(--size-m);
+    height: var(--size-m);
+  }
+
+  &.sizeL:hover,
+  &.sizeL.selected {
+    width: var(--size-l);
+    height: var(--size-l);
+  }
+
+  &.sizeXl:hover,
+  &.sizeXl.selected {
+    width: var(--size-xl);
+    height: var(--size-xl);
+  }
+
+  &:hover,
+  &.selected {
+    background-color: #fff;
+  }
+
+  span {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  &:hover span,
+  &.selected span {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
