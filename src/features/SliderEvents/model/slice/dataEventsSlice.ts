@@ -21,6 +21,11 @@ export const dateEventsSlice = createSlice({
         state.current -= 1;
       }
     },
+    setDateInterval: (state, action: PayloadAction<number>) => {
+      if (action.payload < state.dateEvents.length) {
+        state.current = action.payload;
+      }
+    },
   },
 });
 

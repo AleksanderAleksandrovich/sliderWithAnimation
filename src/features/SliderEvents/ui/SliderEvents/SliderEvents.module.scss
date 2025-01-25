@@ -25,14 +25,10 @@
   height: 1px;
 }
 
-.circle {
-  width: 530px;
-  height: 530px;
+.circleButtons {
   position: absolute;
   top: calc(480px - 530px / 2);
   left: calc(50% - 530px / 2);
-  border-radius: 50%;
-  border: 1px solid var(--color-primaryBorder);
 }
 
 .date {

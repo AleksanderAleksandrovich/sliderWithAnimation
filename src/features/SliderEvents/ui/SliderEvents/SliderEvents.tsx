@@ -4,6 +4,7 @@ import { SliderEventsDate } from "../SliderEventsDate/SliderEventsDate";
 import { getDateEventsState } from "../../model/selectors/getDateEventsState";
 import { dateEventsActions } from "../../model/slice/dataEventsSlice";
 import { SliderEventsControl } from "../SliderEventsControl/SliderEventsControl";
+import { CircleButtons } from "../CircleButtons/CircleButtons";
 import classes from "./SliderEvents.module.scss";
 
 import { SliderForCards } from "widgets/SliderForCards";
@@ -29,7 +30,11 @@ export const SliderEvents = ({}: SliderEventsProps) => {
     <div className={classNames(classes.sliderEvents, {}, [])}>
       <div className={classes.verticalLine} />
       <div className={classes.horizontalLine} />
-      <div className={classes.circle} />
+      <CircleButtons
+        className={classes.circleButtons}
+        count={dateEvents.length}
+        active={current + 1}
+      />
       <SliderEventsTitle value="Исторические даты" />
       <SliderEventsDate
         beginDate={dateEvents[current].dateStart}
@@ -51,7 +56,10 @@ export const SliderEvents = ({}: SliderEventsProps) => {
           <SliderEventsControl onClick={handleNext} disabled={isEnd} />
         </div>
       </div>
-      <SliderForCards facts={dateEvents[current].facts} className={classes.sliderCards}/>
+      <SliderForCards
+        facts={dateEvents[current].facts}
+        className={classes.sliderCards}
+      />
     </div>
   );
 };
