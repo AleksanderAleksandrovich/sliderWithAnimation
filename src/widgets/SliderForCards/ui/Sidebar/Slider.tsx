@@ -88,7 +88,11 @@ export const SliderForCards = ({
           onClick={nextHandler}
         />
       )}
-      <Swiper {...sliderSettings} className={classes.swiperContainer}>
+      <Swiper
+        {...sliderSettings}
+        className={classes.swiperContainer}
+        ref={swiperRef}
+      >
         {currentFacts.map((el) => (
           <SwiperSlide key={el.id}>
             <Card fact={el} />
