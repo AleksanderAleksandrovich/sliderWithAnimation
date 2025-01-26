@@ -4,7 +4,7 @@
   padding: 0;
   color: var(--color-primary);
   font: var(--font-m);
-  transition: width 0.3s, height 0.3s, background-color 0.3s;
+  transition: width 0.3s, height 0.3s, background-color 0.3s, opacity 0.3s;
 }
 
 .circle {
@@ -21,6 +21,18 @@
 
 .gray {
   border: 1px solid var(--color-primaryBorderButton);
+}
+
+.withoutBorder {
+  border: none;
+  opacity: 0.5;
+  background-color: var(--color-primary);
+}
+
+.sizeSMobile {
+  width: var(--size-s);
+  height: var(--size-s);
+  flex-shrink: 0;
 }
 
 .sizeM {
@@ -101,5 +113,23 @@
   &.selected span {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@media (max-width: 500px) {
+  .sizeL {
+    width: var(--size-l-mobile);
+    height: var(--size-l-mobile);
+  }
+  .button span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .selected {
+    width: var(--size-s);
+    height: var(--size-s);
+    opacity: 1;
   }
 }

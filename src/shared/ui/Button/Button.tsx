@@ -5,9 +5,11 @@ import { classNames } from "shared/lib/classNames/classNames";
 export enum ButtonTheme {
   BLUE = "blue",
   GRAY = "gray",
+  WITHOUTBORDER = "withoutBorder",
 }
 
 export enum ButtonSize {
+  SMOBILE = "sizeSMobile",
   M = "sizeM",
   L = "sizeL",
   XL = "sizeXl",
