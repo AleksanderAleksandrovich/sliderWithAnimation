@@ -6,11 +6,34 @@
   --font-size-l: 25px;
   --font-size-xl: 56px;
   --font-size-xxl: 200px;
+
   --line-height-s: 18px;
   --line-height-m: 30px;
   --line-height-l: 30px;
   --line-height-xl: 66px;
   --line-height-xxl: 160px;
+
+  --font-size-s-mobile: 14px;
+  --font-size-m-mobile: 16px;
+  --font-size-l-mobile: 20px;
+  --font-size-xl-mobile: 56px;
+
+  --line-height-s-mobile: 20px;
+  --line-height-m-mobile: 20px;
+  --line-height-l-mobile: 24px;
+  --line-height-xl-mobile: 72px;
+
+  --font-s-mobile: 400 var(--font-size-s-mobile) / var(--line-height-s-mobile)
+    var(--font-family-main);
+  --font-m-mobile: 400 var(--font-size-m-mobile) / var(--line-height-m-mobile)
+    var(--font-family-secondary);
+  --font-m-mobile-bold: 700 var(--font-size-m-mobile) /
+    var(--line-height-m-mobile) var(--font-family-main);
+  --font-l-mobile: 700 var(--font-size-l-mobile) / var(--line-height-l-mobile)
+    var(--font-family-main);
+  --font-xl-mobile: 700 var(--font-size-xl-mobile) /
+    var(--line-height-xl-mobile) var(--font-family-main);
+
   --font-s: 400 var(--font-size-s) / var(--line-height-s)
     var(--font-family-main);
   --font-m: 400 var(--font-size-m) / var(--line-height-m)
@@ -26,6 +49,7 @@
 
   --color-primary: #42567a;
   --color-primaryBorder: #42567a31;
+  --color-secondaryBorder: #c7cdd9;
   --color-primaryBorderButton: #42567a83;
   --color-blue: #3877ee;
   --color-blueShadow: #3878ee3a;
@@ -35,4 +59,11 @@
   --size-m: 40px;
   --size-l: 50px;
   --size-xl: 56px;
+
+  --size-l-mobile: 25px;
+
+  --width-container: 1480px;
+  --width-container-mobile: 314px;
+
+  --padding: 20px;
 }
