@@ -1,30 +1,34 @@
-import { useDispatch, useSelector } from "react-redux";
 import { SliderEventsTitle } from "../SliderEventsTitle/SliderEventsTitle";
 import { SliderEventsDate } from "../SliderEventsDate/SliderEventsDate";
-import { getDateEventsState } from "../../model/selectors/getDateEventsState";
-import { dateEventsActions } from "../../model/slice/dataEventsSlice";
+
 import { SliderEventsControl } from "../SliderEventsControl/SliderEventsControl";
 import { CircleButtons } from "../CircleButtons/CircleButtons";
+import { DateEvent } from "../../model/types/dateEventsSchema";
 import classes from "./SliderEvents.module.scss";
 
 import { SliderForCards } from "widgets/SliderForCards";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Text, TextSize } from "shared/ui/Text/Text";
-type SliderEventsProps = {};
 
-export const SliderEvents = ({}: SliderEventsProps) => {
-  const { dateEvents, current } = useSelector(getDateEventsState);
-  const dispatch = useDispatch();
+type SliderEventsProps = {
+  events: DateEvent[];
+  current: number;
+  handleNext: () => void;
+  handlePrev: () => void;
+  handleSetEvent: (event: number) => void;
+  title: string;
+};
 
-  const isEnd = current === dateEvents.length - 1;
+export const SliderEvents = ({
+  current,
+  events,
+  handleNext,
+  handlePrev,
+  handleSetEvent,
+  title,
+}: SliderEventsProps) => {
+  const isEnd = current === events.length - 1;
   const isStart = current === 0;
-
-  const handleNext = () => {
-    dispatch(dateEventsActions.nextDateInterval());
-  };
-  const handlePrev = () => {
-    dispatch(dateEventsActions.prevDateInterval());
-  };
 
   return (
     <div className={classNames(classes.sliderEvents, {}, [])}>
@@ -32,20 +36,20 @@ export const SliderEvents = ({}: SliderEventsProps) => {
       <div className={classes.horizontalLine} />
       <CircleButtons
         className={classes.circleButtons}
-        count={dateEvents.length}
+        count={events.length}
         active={current + 1}
+        handleSetEvent={handleSetEvent}
+        titleEvent={events[current].title}
       />
-      <SliderEventsTitle value="Исторические даты" />
+
+      <SliderEventsTitle value={title} />
       <SliderEventsDate
-        beginDate={dateEvents[current].dateStart}
-        endDate={dateEvents[current].dateEnd}
+        beginDate={events[current].dateStart}
+        endDate={events[current].dateEnd}
         className={classes.date}
       />
       <div className={classes.wrapperBlockControl}>
-        <Text
-          size={TextSize.S}
-          value={`0${current + 1}/0${dateEvents.length}`}
-        />
+        <Text size={TextSize.S} value={`0${current + 1}/0${events.length}`} />
 
         <div className={classes.wrapperController}>
           <SliderEventsControl
@@ -57,7 +61,7 @@ export const SliderEvents = ({}: SliderEventsProps) => {
         </div>
       </div>
       <SliderForCards
-        facts={dateEvents[current].facts}
+        facts={events[current].facts}
         className={classes.sliderCards}
       />
     </div>

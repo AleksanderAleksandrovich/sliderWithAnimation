@@ -1,7 +1,8 @@
-import { useDispatch } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 import classes from "./CircleButtons.module.scss";
-import { dateEventsActions } from "../../model/slice/dataEventsSlice";
+import { computePosition } from "../../utils/ComputedPositionInCircle/ComputedPositionInCircle";
+import { TitleEvent } from "../TitleEvent/TitleEvent";
+
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
 
@@ -9,19 +10,24 @@ type CircleButtonsProps = {
   className?: string;
   count: number;
   active: number;
+  handleSetEvent: (event: number) => void;
+  titleEvent: string;
 };
 
 export const CircleButtons = ({
   className,
   count,
   active,
+  handleSetEvent,
+  titleEvent,
 }: CircleButtonsProps) => {
   const radius = 264;
 
-  const dispatch = useDispatch();
-
   const [currentAngle, setCurrentAngle] = useState(0);
   const [targetAngle, setTargetAngle] = useState(0);
+  const [direction, setDirection] = useState<"clockwise" | "counterclockwise">(
+    "clockwise"
+  );
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -36,6 +42,8 @@ export const CircleButtons = ({
     if (Math.abs(diff) > 180) {
       diff = diff > 0 ? diff - 360 : diff + 360;
     }
+
+    setDirection(diff > 0 ? "clockwise" : "counterclockwise");
 
     setTargetAngle(currentAngle + diff);
   }, [active, count]);
@@ -69,24 +77,6 @@ export const CircleButtons = ({
     };
   }, [currentAngle, targetAngle]);
 
-  const handleClick = (active: number) => {
-    dispatch(dateEventsActions.setDateInterval(active));
-  };
-
-  const computePosition = (
-    index: number,
-    total: number,
-    radius: number,
-    angle: number
-  ) => {
-    const step = (2 * Math.PI) / total;
-    const initialOffset = -Math.PI / 3;
-    const currentAngle = step * index + (angle * Math.PI) / 180 + initialOffset;
-    const x = radius * Math.cos(currentAngle);
-    const y = radius * Math.sin(currentAngle);
-    return { x, y };
-  };
-
   const buttons = Array.from({ length: count }, (_, i) => ({
     id: i + 1,
     isActive: i + 1 === active,
@@ -94,23 +84,28 @@ export const CircleButtons = ({
 
   return (
     <div className={classNames(classes.circle, {}, [className])}>
+      <TitleEvent
+        titleEvent={titleEvent}
+        className={classes.titleEvent}
+        direction={direction}
+      />
       <div className={classes.circleContainer}>
         {buttons.map(({ id, isActive }, index) => {
           const { x, y } = computePosition(index, count, radius, currentAngle);
           return (
             <Button
               key={id}
-              style={{
-                top: `${radius + y}px`,
-                left: `${radius + x}px`,
-              }}
               className={classes.button}
               size={ButtonSize.XL}
               theme={ButtonTheme.GRAY}
               circle
               selected={isActive}
               animated
-              onClick={() => handleClick(index)}
+              onClick={() => handleSetEvent(index)}
+              style={{
+                top: `${radius + y}px`,
+                left: `${radius + x}px`,
+              }}
             >
               {id}
             </Button>
