@@ -4,6 +4,22 @@
   position: relative;
 }
 
+@media (max-width: 500px) {
+  .sliderWrapper {
+    width: 100vw;
+    position: absolute;
+    left: 0;
+  }
+  .swiperContainer {
+    min-width: 100%;
+    padding-left: clamp(
+      var(--padding),
+      calc((100vw - 274px) / 2),
+      calc((100vw - 274px) / 2)
+    );
+  }
+}
+
 .btnPrev,
 .btnNext {
   position: absolute;

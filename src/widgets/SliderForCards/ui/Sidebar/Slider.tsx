@@ -12,9 +12,14 @@ import { classNames } from "shared/lib/classNames/classNames";
 type SliderForCardsProps = {
   facts: Fact[];
   className?: string;
+  isDesktop?: boolean;
 };
 
-export const SliderForCards = ({ facts, className }: SliderForCardsProps) => {
+export const SliderForCards = ({
+  facts,
+  className,
+  isDesktop = true,
+}: SliderForCardsProps) => {
   const swiperRef = useRef<SwiperRef>(null);
   const wrapperRef = useRef(null);
   const [isBeginning, setIsBeginning] = useState(true);
@@ -27,14 +32,14 @@ export const SliderForCards = ({ facts, className }: SliderForCardsProps) => {
     if (facts !== currentFacts) {
       fadeOutAnimation = gsap.to(wrapperRef.current, {
         opacity: 0,
-        duration: 0.3,
+        duration: 0.5,
         onComplete: () => {
           setCurrentFacts(facts);
 
           gsap.fromTo(
             wrapperRef.current,
             { opacity: 0 },
-            { opacity: 1, duration: 0.3 }
+            { opacity: 1, duration: 0.5 }
           );
         },
       });
@@ -55,9 +60,13 @@ export const SliderForCards = ({ facts, className }: SliderForCardsProps) => {
     swiperRef.current?.swiper.slideNext();
   };
 
-  const onSlideChange = (slide: SwiperClass) => {
-    setIsBeginning(slide.isBeginning);
-    setIsEnd(slide.isEnd);
+  const sliderSettings = {
+    spaceBetween: isDesktop ? 80 : 25,
+    slidesPerView: isDesktop ? 3 : 1.5,
+    onSlideChange: (swiper: SwiperClass) => {
+      setIsBeginning(swiper.isBeginning);
+      setIsEnd(swiper.isEnd);
+    },
   };
 
   return (
@@ -65,26 +74,21 @@ export const SliderForCards = ({ facts, className }: SliderForCardsProps) => {
       className={classNames(classes.sliderWrapper, {}, [className])}
       ref={wrapperRef}
     >
-      {!isBeginning && (
+      {!isBeginning && isDesktop && (
         <ButtonControl
           direction="left"
           className={classes.btnPrev}
           onClick={prevHandler}
         />
       )}
-      {!isEnd && (
+      {!isEnd && isDesktop && (
         <ButtonControl
           direction="right"
           className={classes.btnNext}
           onClick={nextHandler}
         />
       )}
-      <Swiper
-        spaceBetween={80}
-        slidesPerView={3}
-        ref={swiperRef}
-        onSlideChange={onSlideChange}
-      >
+      <Swiper {...sliderSettings} className={classes.swiperContainer}>
         {currentFacts.map((el) => (
           <SwiperSlide key={el.id}>
             <Card fact={el} />
