@@ -2,3 +2,9 @@
   color: var(--color-blue);
   font: var(--font-m-bold);
 }
+
+@media (max-width: 500px) {
+  .title {
+    font: var(--font-m-mobile);
+  }
+}

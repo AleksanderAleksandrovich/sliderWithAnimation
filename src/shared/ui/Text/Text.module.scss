@@ -4,3 +4,9 @@
 .sizeS {
   font: var(--font-s);
 }
+
+@media (max-width: 500px) {
+  .sizeM {
+    font: var(--font-s-mobile);
+  }
+}
