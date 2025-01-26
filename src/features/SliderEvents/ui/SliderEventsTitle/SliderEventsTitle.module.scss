@@ -14,3 +14,12 @@
 .title {
   font: var(--font-xl);
 }
+
+@media (max-width: 500px) {
+  .wrapperTitle {
+    width: 124px;
+  }
+  .title {
+    font: var(--font-l-mobile);
+  }
+}
