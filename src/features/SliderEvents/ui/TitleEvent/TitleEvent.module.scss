@@ -1,3 +1,10 @@
 .title {
   font: var(--font-m-bold);
 }
+
+@media (max-width: 500px) {
+  .title {
+    font: var(--font-m-mobile-bold);
+    height: var(--line-height-m-mobile);
+  }
+}

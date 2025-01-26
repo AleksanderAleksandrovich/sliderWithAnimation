@@ -6,13 +6,15 @@ import gsap from "gsap";
 type TitleEventProps = {
   className?: string;
   titleEvent?: string;
-  direction: "clockwise" | "counterclockwise";
+  direction?: "clockwise" | "counterclockwise";
+  isDesktop?: boolean;
 };
 
 export const TitleEvent = ({
   className,
   titleEvent,
-  direction,
+  direction = "clockwise",
+  isDesktop = true,
 }: TitleEventProps) => {
   let titleRef = useRef(null);
 
@@ -20,16 +22,24 @@ export const TitleEvent = ({
 
   useEffect(() => {
     let fadeOutAnimation: ReturnType<typeof gsap.to>;
-    const animation =
-      direction === "clockwise"
-        ? {
-            x: 50,
-            y: 70,
-          }
-        : {
-            x: -70,
-            y: -30,
-          };
+
+    let animation;
+    
+    if (isDesktop) {
+      animation =
+        direction === "clockwise"
+          ? {
+              x: 50,
+              y: 70,
+            }
+          : {
+              x: -70,
+              y: -30,
+            };
+    } else {
+      animation = {};
+    }
+
     if (titleEvent !== currentTitleEvent) {
       fadeOutAnimation = gsap.to(titleRef.current, {
         opacity: 0,
