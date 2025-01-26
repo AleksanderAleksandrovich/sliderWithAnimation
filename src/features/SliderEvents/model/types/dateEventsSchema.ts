@@ -2,6 +2,7 @@ import { Fact } from "shared/data/type";
 
 export type DateEvent = {
   dateStart: string;
+  title?: string;
   dateEnd: string;
   facts: Fact[];
 };
