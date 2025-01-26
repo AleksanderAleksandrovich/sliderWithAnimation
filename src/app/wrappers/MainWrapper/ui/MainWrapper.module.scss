@@ -1,4 +1,11 @@
 .wrapper {
-  width: 1440px;
+  width: var(--width-container);
   margin: 0 auto;
+  padding: 0 var(--padding);
+}
+
+@media (max-width: 500px) {
+  .wrapper {
+    width: var(--width-container-mobile);
+  }
 }
