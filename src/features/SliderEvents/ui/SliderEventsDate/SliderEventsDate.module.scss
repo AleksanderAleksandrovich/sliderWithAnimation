@@ -11,6 +11,17 @@
   letter-spacing: -4px;
 }
 
+@media (max-width: 500px) {
+  .sliderEventsDate {
+    gap: 40px;
+  }
+  .beginDate,
+  .endDate {
+    font: var(--font-xl-mobile);
+    letter-spacing: -4px;
+  }
+}
+
 .beginDate {
   color: var(--color-blue);
 }
