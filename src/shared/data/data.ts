@@ -1,4 +1,5 @@
-import { DateEvent } from "features/SliderEvents";
+import { DateEvent } from "./type";
+
 
 export const data: DateEvent[] = [
   {

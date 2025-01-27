@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import classes from "./CircleButtons.module.scss";
-import { computePosition } from "../../utils/ComputedPositionInCircle/ComputedPositionInCircle";
+import { computePosition } from "../../utils/сomputedPositionInCircle";
 import { TitleEvent } from "../TitleEvent/TitleEvent";
 
 import { classNames } from "shared/lib/classNames/classNames";

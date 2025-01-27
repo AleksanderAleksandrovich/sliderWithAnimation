@@ -3,7 +3,6 @@ import { SliderEventsDate } from "../SliderEventsDate/SliderEventsDate";
 
 import { SliderEventsControl } from "../SliderEventsControl/SliderEventsControl";
 import { CircleButtons } from "../CircleButtons/CircleButtons";
-import { DateEvent } from "../../model/types/dateEventsSchema";
 import classes from "./SliderEvents.module.scss";
 import { TitleEvent } from "../TitleEvent/TitleEvent";
 
@@ -12,6 +11,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Text, TextSize } from "shared/ui/Text/Text";
 import { useWindowWidth } from "shared/lib/hooks/useWindowWidth";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
+import { DateEvent } from "shared/data/type";
 
 type SliderEventsProps = {
   events: DateEvent[];
