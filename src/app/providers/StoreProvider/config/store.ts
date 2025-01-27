@@ -8,7 +8,6 @@ export const createReduxStore = (initialState?: StateSchema) => {
   };
   return configureStore<StateSchema>({
     reducer: rootReducer,
-    // devTools: __IS_DEV__,
-    // preloadedState: initialState,
+    devTools: true,
   });
 };
