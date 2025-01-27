@@ -36,7 +36,7 @@ export const SliderEvents = ({
 
   const isDesktop = widthWindow > 500;
 
-  const desktopVersion = (
+  const desktopVersion = () => (
     <div className={classNames(classes.sliderEvents, {}, [])}>
       <div className={classes.verticalLine} />
       <div className={classes.horizontalLine} />
@@ -73,7 +73,7 @@ export const SliderEvents = ({
     </div>
   );
 
-  const mobileVersion = (
+  const mobileVersion = () => (
     <div className={classNames(classes.sliderEvents, {}, [])}>
       <SliderEventsTitle value={title} isDesktop={isDesktop} />
       <SliderEventsDate
@@ -127,7 +127,7 @@ export const SliderEvents = ({
     </div>
   );
 
-  if (isDesktop) return desktopVersion;
+  if (isDesktop) return desktopVersion();
 
-  return mobileVersion;
+  return mobileVersion();
 };
