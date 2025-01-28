@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getDateEventsState } from "app/model/EventsModel/selectors/getDateEventsState";
-import { dateEventsActions } from "app/model/EventsModel/slice/dataEventsSlice";
 import { SliderEvents } from "features/SliderEvents";
+import { dateEventsActions, getDateEventsState } from "entities/EventsModel";
 
 export const MainPage = () => {
   const dispatch = useDispatch();

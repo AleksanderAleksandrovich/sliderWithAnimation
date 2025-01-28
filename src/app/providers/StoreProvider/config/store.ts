@@ -1,6 +1,6 @@
 import { configureStore, ReducersMapObject } from "@reduxjs/toolkit";
 import { StateSchema } from "./stateSchema";
-import { dateEventsReducer } from "app/model/EventsModel/slice/dataEventsSlice";
+import { dateEventsReducer } from "entities/EventsModel";
 
 
 export const createReduxStore = (initialState?: StateSchema) => {
