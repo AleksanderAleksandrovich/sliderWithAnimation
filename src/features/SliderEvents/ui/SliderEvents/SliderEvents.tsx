@@ -11,27 +11,46 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Text, TextSize } from "shared/ui/Text/Text";
 import { useWindowWidth } from "shared/lib/hooks/useWindowWidth";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
-import { DateEvent } from "shared/data/type";
+// import { DateEvent } from "shared/data/type";
+import { useState } from "react";
+import { data } from "shared/data/data";
 
 type SliderEventsProps = {
-  events: DateEvent[];
-  current: number;
-  handleNext: () => void;
-  handlePrev: () => void;
-  handleSetEvent: (event: number) => void;
+  // events: DateEvent[];
+  // current: number;
+  // handleNext: () => void;
+  // handlePrev: () => void;
+  // handleSetEvent: (event: number) => void;
   title: string;
 };
 
 export const SliderEvents = ({
-  current,
-  events,
-  handleNext,
-  handlePrev,
-  handleSetEvent,
+  // current,
+  // events,
+  // handleNext,
+  // handlePrev,
+  // handleSetEvent,
   title,
 }: SliderEventsProps) => {
+  const [current, setCurrent] = useState(0);
   const widthWindow = useWindowWidth();
-  const isEnd = current === events.length - 1;
+
+  const handleNext = () => {
+    if (data.length - 1 > current) {
+      setCurrent((prev) => prev + 1);
+    }
+  };
+  const handlePrev = () => {
+    if (0 < current) {
+      setCurrent((prev) => prev - 1);
+    }
+  };
+  const handleSetEvent = (active: number) => {
+    if (active < data.length) {
+      setCurrent(active);
+    }
+  };
+  const isEnd = current === data.length - 1;
   const isStart = current === 0;
 
   const isDesktop = widthWindow > 500;
@@ -42,20 +61,20 @@ export const SliderEvents = ({
       <div className={classes.horizontalLine} />
       <CircleButtons
         className={classes.circleButtons}
-        count={events.length}
+        count={data.length}
         active={current + 1}
         handleSetEvent={handleSetEvent}
-        titleEvent={events[current].title}
+        titleEvent={data[current].title}
       />
 
       <SliderEventsTitle value={title} />
       <SliderEventsDate
-        beginDate={events[current].dateStart}
-        endDate={events[current].dateEnd}
+        beginDate={data[current].dateStart}
+        endDate={data[current].dateEnd}
         className={classes.date}
       />
       <div className={classes.wrapperBlockControl}>
-        <Text size={TextSize.S} value={`0${current + 1}/0${events.length}`} />
+        <Text size={TextSize.S} value={`0${current + 1}/0${data.length}`} />
 
         <div className={classes.wrapperController}>
           <SliderEventsControl
@@ -67,7 +86,7 @@ export const SliderEvents = ({
         </div>
       </div>
       <SliderForCards
-        facts={events[current].facts}
+        facts={data[current].facts}
         className={classes.sliderCards}
       />
     </div>
@@ -77,13 +96,13 @@ export const SliderEvents = ({
     <div className={classNames(classes.sliderEvents, {}, [])}>
       <SliderEventsTitle value={title} isDesktop={isDesktop} />
       <SliderEventsDate
-        beginDate={events[current].dateStart}
-        endDate={events[current].dateEnd}
+        beginDate={data[current].dateStart}
+        endDate={data[current].dateEnd}
         className={classes.date}
       />
 
       <TitleEvent
-        titleEvent={events[current].title}
+        titleEvent={data[current].title}
         className={classes.titleEvent}
         isDesktop={false}
       />
@@ -91,12 +110,12 @@ export const SliderEvents = ({
       <div className={classes.horizontalLineMobile} />
 
       <SliderForCards
-        facts={events[current].facts}
+        facts={data[current].facts}
         className={classes.sliderCards}
         isDesktop={isDesktop}
       />
       <div className={classes.wrapperBlockControl}>
-        <Text size={TextSize.S} value={`0${current + 1}/0${events.length}`} />
+        <Text size={TextSize.S} value={`0${current + 1}/0${data.length}`} />
 
         <div className={classes.wrapperController}>
           <SliderEventsControl
@@ -113,7 +132,7 @@ export const SliderEvents = ({
         </div>
       </div>
       <div className={classes.paginationWrapper}>
-        {events.map(({ dateEnd }, index) => (
+        {data.map(({ dateEnd }, index) => (
           <Button
             key={dateEnd}
             circle
